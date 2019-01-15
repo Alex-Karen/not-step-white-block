@@ -1,13 +1,28 @@
-<!--index.wxml-->
+<!-- index.wxml -->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+    <view class="line">
+        <view class="block black" id="endless" bind:tap="goGame">
+            <text>无尽模式</text>
+        </view>
+        <view class="block" id="time" bind:tap="goGame">
+            <text>计时模式</text>
+        </view>
+    </view>
+    <view class="line">
+        <view class="block" id="speed" bind:tap="goGame">
+            <text>急速模式</text>
+        </view>
+        <view class="block black">
+            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" />
+            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </view>
+    </view>
+    <view class="line">
+        <view class="block black">
+            <text class="">最高分数：{{heighestScore}}</text>
+        </view>
+        <view class="block">
+            <text class="">最长时间：{{longestTime}}</text>
+        </view>
+    </view>
 </view>
