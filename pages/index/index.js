@@ -16,7 +16,9 @@ Page({
     },
     goGame: function (e) {
         var gameType = e.target.id;
-        console.log(gameType)
+        wx.redirectTo({
+            url: '../' + gameType + '/play'
+        })
     },
     onLoad: function () {
         var that = this
@@ -25,6 +27,17 @@ Page({
                 userInfo: userInfo
             })
         })
-
+        app.getHeighestScore('endlessScore', function (heighestScore) {
+            app.globalData.endlessScore = heighestScore || 0
+            that.setData({
+                heighestScore: heighestScore || 0
+            })
+        })
+        app.getHeighestScore('timeScore', function (heighestScore) {
+            app.globalData.timeScore = heighestScore || 0;
+            that.setData({
+                longestTime: heighestScore || 0
+            })
+        })
     }
 })
